@@ -76,7 +76,14 @@ class SpPlaylist:
             self.pl_link = None
             print(f"Didn't find any track for '{self.pl_title}'")
             return
-        playlist = self.spoty_obj.user_playlist_create(APP_USERNAME, self.pl_title)
+        playlist = None
+        while True:
+            try:
+                playlist = self.spoty_obj.user_playlist_create(APP_USERNAME, self.pl_title)
+                break
+            except spotipy.SpotifyException:
+                sleep(1)
+                continue
         self.pl_link = playlist['external_urls']['spotify']
         while len(self.track_links) > 100:
             try:
@@ -106,8 +113,8 @@ class SpotifyUser:
                                    spoty_obj=self.spotify) for filename in os.listdir(self.directory)]
         for pl in sp_playlists:
             pl.run()
-        for title, url in self.pl_links.items():
-            print(f'Playlist: {title}, URL: {url}')
+        for pl in sp_playlists:
+            print(f'Playlist: {pl.pl_title}, URL: {pl.pl_link}')
 
 
 if __name__ == '__main__':

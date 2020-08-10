@@ -197,6 +197,7 @@ def _process_cmd(args):
         p_obj.run()
     else:
         print('Got None')
+    print('Collecting spotify playlists...')
     spoty_user = SpotifyUser(SP_USER)
     spoty_user.run()
 
