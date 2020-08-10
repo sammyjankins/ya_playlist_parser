@@ -7,4 +7,4 @@ Or place it wherever you like and specify it's location like webdriver.Chrome('d
 Link for download: https://sites.google.com/a/chromium.org/chromedriver/downloads 
 To download correct version - check it in your chrome's options!
 
-~ `python yandex_pl_parser.py --yandex https://music.yandex.ru/users/[your_username]`
+`~ python yandex_pl_parser.py --yandex https://music.yandex.ru/users/[your_username]`
